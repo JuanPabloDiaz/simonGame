@@ -8,7 +8,7 @@ This project is a responsive web application that allows users to use a pomodoro
 
 This project is a Simon Game, which is a time management system that encourages people to work with the time they have—rather than against it. Using this method, you break your workday into 25-minute chunks separated by five-minute breaks. These intervals are referred to as pomodoros.
 
-This project was built as part of the **[freeCodeCamp Front End Libraries Certification](https://www.freecodecamp.org/certification/1diazdev/front-end-development-libraries)**. The goal was to build a Simon Game with React.
+This project was built as part of the **[freeCodeCamp’s legacy Front End Development Certification]()**. The goal was to build a Simon Game with React.
 
 <div align="center">
 
