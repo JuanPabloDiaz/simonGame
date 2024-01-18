@@ -8,7 +8,7 @@ Players must watch and listen carefully, then repeat the sequence by pressing th
 
 ## Description 💡
 
-This project was built as part of the **[freeCodeCamp’s legacy Front End Development Certification]()**. The goal was to build a Simon Game with React.
+This project was built as part of the **[freeCodeCamp’s legacy Front End Development Certification]()**. The goal was to build a Simon Game with React. [Learn more](https://www.freecodecamp.org/learn/coding-interview-prep/take-home-projects/build-a-simon-game)
 
 <div align="center">
 
