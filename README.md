@@ -2,11 +2,11 @@
 
 # Simon Game
 
-This project is a responsive web application that allows users to use a pomodoro timer to break down work into intervals, traditionally 25 minutes in length, separated by short breaks. Thats why is called Simon Game
+This project is a Simon Game, which is a The Simon game is a memory game that tests your recall and hand-eye coordination. It has four colored buttons (red, blue, green, and yellow) that light up and play corresponding tones in a random sequence.
+
+Players must watch and listen carefully, then repeat the sequence by pressing the buttons in the correct order. If you succeed, the game adds another color and tone to the sequence, making it progressively longer and more challenging. The game continues until you make a mistake, at which point your score is displayed and you can start over.
 
 ## Description 💡
-
-This project is a Simon Game, which is a time management system that encourages people to work with the time they have—rather than against it. Using this method, you break your workday into 25-minute chunks separated by five-minute breaks. These intervals are referred to as pomodoros.
 
 This project was built as part of the **[freeCodeCamp’s legacy Front End Development Certification]()**. The goal was to build a Simon Game with React.
 
@@ -31,13 +31,13 @@ This project was built as part of the **[freeCodeCamp’s legacy Front End Devel
 
 ## Features:
 
-- Responsive design: [Simon Game](https://25.jpdiaz.dev) adapts to any screen size, ensuring a consistent and enjoyable experience for all users.
+- Responsive design: [Simon Game](https://simon.jpdiaz.dev) adapts to any screen size, ensuring a consistent and enjoyable experience for all users.
 - Sleek and modern UI: Tailwind CSS provides a beautiful and intuitive user interface.
 - Efficient and performant: Vite.js ensures fast loading times and a smooth experience.
 
 ### Built With 🔑
 
-Welcome to [Simon Game](https://25.jpdiaz.dev), a simple and intuitive pomodoro timer built with React.js, Vite.js, and Tailwind CSS.
+Welcome to [Simon Game](https://simon.jpdiaz.dev), a memory game built with React.js, Vite.js, and Tailwind CSS.
 
 ![React](https://img.shields.io/badge/React-61DAFB.svg?style=for-the-badge&logo=React&logoColor=black)
 ![Vite](https://img.shields.io/badge/Vite-646CFF.svg?style=for-the-badge&logo=Vite&logoColor=white)
@@ -51,7 +51,7 @@ Here's a closer look at the tech stack:
 
 ## Get started 🛠️
 
-To get started with [Simon Game](https://25.jpdiaz.dev), simply clone the repository and follow the setup instructions. You'll be up and running in no time!
+To get started with [Simon Game](https://simon.jpdiaz.dev), simply clone the repository and follow the setup instructions. You'll be up and running in no time!
 
 ### Setup 📋
 
@@ -68,11 +68,11 @@ To get started with [Simon Game](https://25.jpdiaz.dev), simply clone the reposi
 
 ## Contribution 🤝
 
-I welcome contributions to the [Simon Game](https://25.jpdiaz.dev)! Feel free to fork the repository and submit pull requests with your improvements.
+I welcome contributions to the [Simon Game](https://simon.jpdiaz.dev)! Feel free to fork the repository and submit pull requests with your improvements.
 
 ## License 📜
 
-[Simon Game](https://25.jpdiaz.dev) is licensed under the MIT License.
+[Simon Game](https://simon.jpdiaz.dev) is licensed under the MIT License.
 
 I hope you enjoy using the Simon Game!
 
@@ -101,6 +101,7 @@ I hope you enjoy using the Simon Game!
 
 Resources list that I find helpful and would like to give credit to.
 
+- [Video Tutorial](https://www.youtube.com/watch?v=ooJ-yr9j-D4)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Vite.js](https://vitejs.dev/)
 - [React.js](https://reactjs.org/)
