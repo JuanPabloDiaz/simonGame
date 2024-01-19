@@ -9,10 +9,7 @@ const Button = ({ color, onPress }) => {
   };
 
   return (
-    <button
-      className={`m-2 h-24 w-24 ${colorClasses[color]}`}
-      onClick={onPress}
-    />
+    <button className={`h-60 w-60 ${colorClasses[color]}`} onClick={onPress} />
   );
 };
 

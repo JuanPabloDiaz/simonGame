@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Button from "./Components/Button";
+import Layout from "./Components/Layout";
 
 const App = () => {
   const [sequence, setSequence] = useState([]);
@@ -40,21 +41,29 @@ const App = () => {
   };
 
   return (
-    <div className="flex h-screen flex-col items-center justify-center bg-gray-200">
-      {gameOver && <p className="text-2xl text-red-500">Game Over!</p>}
-      <div className="flex flex-wrap justify-center">
-        <Button color="red" onPress={() => handleButtonPress(1)} />
-        <Button color="green" onPress={() => handleButtonPress(2)} />
-        <Button color="blue" onPress={() => handleButtonPress(3)} />
-        <Button color="yellow" onPress={() => handleButtonPress(4)} />
-      </div>
-      <button
-        className="mt-4 rounded bg-blue-500 px-4 py-2 text-white"
-        onClick={startNewGame}
-      >
-        Start New Game
-      </button>
-    </div>
+    <>
+      <Layout>
+        <div className="flex flex-col items-center justify-center">
+          {gameOver && (
+            <p className=" rounded-lg border p-2 text-2xl text-red-500">
+              Game Over!
+            </p>
+          )}
+          <div className="grid grid-flow-col grid-rows-2 gap-4">
+            <Button color="green" onPress={() => handleButtonPress(2)} />
+            <Button color="yellow" onPress={() => handleButtonPress(4)} />
+            <Button color="red" onPress={() => handleButtonPress(1)} />
+            <Button color="blue" onPress={() => handleButtonPress(3)} />
+          </div>
+          <button
+            className="mt-4 rounded bg-blue-500 px-4 py-2 text-white"
+            onClick={startNewGame}
+          >
+            Start New Game
+          </button>
+        </div>
+      </Layout>
+    </>
   );
 };
 
