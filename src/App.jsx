@@ -86,59 +86,6 @@ const App = () => {
           {gameOver && <p className="h-18 text-2xl text-red-500">Game Over!</p>}
         </div>
       </div>
-      {/* <button
-        className="mt-4 rounded bg-blue-500 px-4 py-2 text-white"
-        onClick={startNewGame}
-      >
-        Start New Game
-      </button> */}
-      {/* <section>
-        <div className="wrap">
-          <div className="wrap-in">
-            <div className="rw">
-              <div className="t-l push green unclickable inline" id="3"></div>
-              <div className="t-r push red but unclickable inline" id="2"></div>
-            </div>
-            <div className="rw">
-              <div className="b-l push yellow unclickable inline" id="1"></div>
-              <div
-                className="b-r push blue but unclickable inline"
-                id="0"
-              ></div>
-            </div>
-          </div>
-          <div className="center">
-            <h1 className="brand">
-              Simon<span className="small">®</span>
-            </h1>
-            <div className="rw">
-              <div className="display inline">
-                <h1 className="count led-off">--</h1>
-                <h3 className="label">COUNT</h3>
-              </div>
-              <div className="btn-box inline">
-                <div
-                  className="round-btn full-red but clickable"
-                  id="start"
-                ></div>
-                <h3 className="label">START</h3>
-              </div>
-              <div className="btn-box inline">
-                <div className="round-btn but clickable" id="mode"></div>
-                <h3 className="label">STRICT</h3>
-                <div className="led" id="mode-led"></div>
-              </div>
-            </div>
-            <div className="rw bot">
-              <h3 className="label inline">OFF</h3>
-              <div className="sw-slot inline">
-                <div className="switch" id="pwr-sw"></div>
-              </div>
-              <h3 className="label inline">ON</h3>
-            </div>
-          </div>
-        </div>
-      </section> */}
     </Layout>
   );
 };
