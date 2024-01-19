@@ -7,15 +7,25 @@ const App = () => {
   const [userSequence, setUserSequence] = useState([]);
   const [gameOver, setGameOver] = useState(false);
 
+  // Create Audio objects for each sound
+  const sounds = [
+    new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"),
+    new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"),
+    new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"),
+    new Audio("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"),
+  ];
+
   // Add a new random button to the sequence
   const addToSequence = () => {
     const newButton = Math.floor(Math.random() * 4) + 1;
     setSequence([...sequence, newButton]);
+    sounds[newButton - 1].play(); // Play the sound
   };
 
   // Handle user button press
   const handleButtonPress = (button) => {
     setUserSequence([...userSequence, button]);
+    sounds[button - 1].play(); // Play the sound
   };
 
   // Check if the user's sequence is correct
@@ -41,29 +51,27 @@ const App = () => {
   };
 
   return (
-    <>
-      <Layout>
-        <div className="flex flex-col items-center justify-center">
-          {gameOver && (
-            <p className="h-18 rounded-lg border p-2 text-2xl text-red-500">
-              Game Over!
-            </p>
-          )}
-          <div className="grid grid-flow-col grid-rows-2">
-            <Button color="green" onPress={() => handleButtonPress(2)} />
-            <Button color="yellow" onPress={() => handleButtonPress(4)} />
-            <Button color="red" onPress={() => handleButtonPress(1)} />
-            <Button color="blue" onPress={() => handleButtonPress(3)} />
-          </div>
-          <button
-            className="mt-4 rounded bg-blue-500 px-4 py-2 text-white"
-            onClick={startNewGame}
-          >
-            Start New Game
-          </button>
+    <Layout>
+      <div className="flex flex-col items-center justify-center">
+        {gameOver && (
+          <p className="h-18 rounded-lg border p-2 text-2xl text-red-500">
+            Game Over!
+          </p>
+        )}
+        <div className="grid grid-flow-col grid-rows-2">
+          <Button color="green" onPress={() => handleButtonPress(1)} />
+          <Button color="yellow" onPress={() => handleButtonPress(2)} />
+          <Button color="red" onPress={() => handleButtonPress(3)} />
+          <Button color="blue" onPress={() => handleButtonPress(4)} />
         </div>
-      </Layout>
-    </>
+        <button
+          className="mt-4 rounded bg-blue-500 px-4 py-2 text-white"
+          onClick={startNewGame}
+        >
+          Start New Game
+        </button>
+      </div>
+    </Layout>
   );
 };
 
