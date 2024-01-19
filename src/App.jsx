@@ -22,7 +22,7 @@ const App = () => {
   const addToSequence = useCallback(() => {
     const newButton = Math.floor(Math.random() * 4) + 1;
     setSequence((prevSequence) => [...prevSequence, newButton]);
-    sounds[newButton - 1].play(); // Play the sound
+    sounds[newButton - 1].play(); // Play the sound (commented out for now to avoid sound when clicking the start new game buttons)
   }, [setSequence, sounds]);
 
   // Handle user button press
@@ -61,7 +61,7 @@ const App = () => {
             Game Over!
           </p>
         )}
-        <div className="grid grid-flow-col grid-rows-2">
+        <div className="grid grid-flow-col grid-rows-2 rounded-full border-8 border-black bg-black">
           <Button color="green" onPress={() => handleButtonPress(1)} />
           <Button color="yellow" onPress={() => handleButtonPress(2)} />
           <Button color="red" onPress={() => handleButtonPress(3)} />
