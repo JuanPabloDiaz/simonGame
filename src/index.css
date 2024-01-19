@@ -63,7 +63,7 @@
 } */
 
 /* Scaling for Mobile */
-/* @media screen and (max-width: 500px) {
+@media screen and (max-width: 500px) {
   .wrap {
     top: 40px;
 
@@ -82,4 +82,4 @@
     left: 50%;
     margin-left: -142px;
   }
-} */
+}
