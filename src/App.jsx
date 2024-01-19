@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import Button from "./Components/Button";
 import Layout from "./Components/Layout";
 
@@ -8,19 +8,22 @@ const App = () => {
   const [gameOver, setGameOver] = useState(false);
 
   // Create Audio objects for each sound
-  const sounds = [
-    new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"),
-    new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"),
-    new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"),
-    new Audio("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"),
-  ];
+  const sounds = useMemo(
+    () => [
+      new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"),
+      new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"),
+      new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"),
+      new Audio("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"),
+    ],
+    [],
+  );
 
   // Add a new random button to the sequence
-  const addToSequence = () => {
+  const addToSequence = useCallback(() => {
     const newButton = Math.floor(Math.random() * 4) + 1;
-    setSequence([...sequence, newButton]);
+    setSequence((prevSequence) => [...prevSequence, newButton]);
     sounds[newButton - 1].play(); // Play the sound
-  };
+  }, [setSequence, sounds]);
 
   // Handle user button press
   const handleButtonPress = (button) => {
@@ -40,7 +43,7 @@ const App = () => {
       setUserSequence([]);
       addToSequence();
     }
-  }, [userSequence]);
+  }, [userSequence, sequence, addToSequence]);
 
   // Start a new game
   const startNewGame = () => {
