@@ -2,7 +2,7 @@
 
 # Simon Game
 
-This project is a Simon Game, which is a The Simon game is a memory game that tests your recall and hand-eye coordination. It has four colored buttons (red, blue, green, and yellow) that light up and play corresponding tones in a random sequence.
+This project is a Simon Game, a memory game that tests your recall and hand-eye coordination. It has four colored buttons (red, blue, green, and yellow) that light up and play corresponding tones in a random sequence.
 
 Players must watch and listen carefully, then repeat the sequence by pressing the buttons in the correct order. If you succeed, the game adds another color and tone to the sequence, making it progressively longer and more challenging. The game continues until you make a mistake, at which point your score is displayed and you can start over.
 
@@ -102,6 +102,7 @@ I hope you enjoy using the Simon Game!
 Resources list that I find helpful and would like to give credit to.
 
 - [Video Tutorial](https://www.youtube.com/watch?v=ooJ-yr9j-D4)
+- [Simon Game example](https://codepen.io/freeCodeCamp/full/obYBjE)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Vite.js](https://vitejs.dev/)
 - [React.js](https://reactjs.org/)
