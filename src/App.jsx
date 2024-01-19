@@ -45,11 +45,11 @@ const App = () => {
       <Layout>
         <div className="flex flex-col items-center justify-center">
           {gameOver && (
-            <p className=" rounded-lg border p-2 text-2xl text-red-500">
+            <p className="h-18 rounded-lg border p-2 text-2xl text-red-500">
               Game Over!
             </p>
           )}
-          <div className="grid grid-flow-col grid-rows-2 gap-4">
+          <div className="grid grid-flow-col grid-rows-2">
             <Button color="green" onPress={() => handleButtonPress(2)} />
             <Button color="yellow" onPress={() => handleButtonPress(4)} />
             <Button color="red" onPress={() => handleButtonPress(1)} />
