@@ -1,3 +1,85 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.count {
+  font-family: "VT323", monospace;
+  color: #dc0d29;
+  padding: 0px;
+  font-size: 2em;
+  width: 50px;
+  background-color: #32050c;
+  position: relative;
+  border: 4px solid #222;
+  border-radius: 10px;
+  margin: auto;
+}
+
+.wrap {
+  width: 472px;
+  height: 472px;
+  border-radius: 100%;
+  position: relative;
+  text-align: center;
+  margin: auto;
+  background-color: #333;
+  top: 10vh;
+  box-shadow: 0px 0px 12px #222;
+}
+
+/* .full-red {
+  background-color: #fc0102;
+}
+.red {
+  background-color: #9f0f17;
+}
+
+.green {
+  background-color: #00a74a;
+}
+
+.yellow {
+  background-color: #cca707;
+}
+
+.blue {
+  background-color: #094a8f;
+}
+
+.yellow.light {
+  background-color: #fed93f;
+}
+
+.blue.light {
+  background-color: #1c8cff;
+}
+
+.red.light {
+  background-color: #ff4c4c;
+}
+
+.green.light {
+  background-color: #13ff7c;
+} */
+
+/* Scaling for Mobile */
+/* @media screen and (max-width: 500px) {
+  .wrap {
+    top: 40px;
+
+    -moz-transform: scale(0.6);
+    -ms-transform: scale(0.6);
+    -o-transform: scale(0.6);
+    -webkit-transform: scale(0.6);
+    transform: scale(0.6);
+
+    -o-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    transform-origin: 0 0;
+
+    left: 50%;
+    margin-left: -142px;
+  }
+} */
