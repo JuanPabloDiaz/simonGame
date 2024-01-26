@@ -45,6 +45,7 @@ startButton.addEventListener("click", (event) => {
   }
 });
 
+// added
 function play() {
   win = false;
   order = [];
@@ -62,6 +63,7 @@ function play() {
   intervalId = setInterval(gameTurn, 800);
 }
 
+// added
 function gameTurn() {
   on = false;
 
@@ -186,6 +188,7 @@ bottomRight.addEventListener("click", (event) => {
   }
 });
 
+// added
 function check() {
   if (playerOrder[playerOrder.length - 1] !== order[playerOrder.length - 1])
     good = false;
@@ -224,7 +227,7 @@ function check() {
     intervalId = setInterval(gameTurn, 800);
   }
 }
-
+// added
 function winGame() {
   flashColor();
   turnCounter.innerHTML = "WIN!";
