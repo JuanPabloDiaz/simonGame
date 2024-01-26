@@ -86,6 +86,7 @@ function gameTurn() {
   }
 }
 
+// added
 function one() {
   if (noise) {
     let audio = document.getElementById("clip1");
@@ -95,6 +96,7 @@ function one() {
   topLeft.style.backgroundColor = "lightgreen";
 }
 
+// added
 function two() {
   if (noise) {
     let audio = document.getElementById("clip2");
@@ -104,6 +106,7 @@ function two() {
   topRight.style.backgroundColor = "tomato";
 }
 
+// added
 function three() {
   if (noise) {
     let audio = document.getElementById("clip3");
@@ -113,6 +116,7 @@ function three() {
   bottomLeft.style.backgroundColor = "yellow";
 }
 
+// added
 function four() {
   if (noise) {
     let audio = document.getElementById("clip4");
@@ -122,6 +126,7 @@ function four() {
   bottomRight.style.backgroundColor = "lightskyblue";
 }
 
+// added
 function clearColor() {
   topLeft.style.backgroundColor = "darkgreen";
   topRight.style.backgroundColor = "darkred";
@@ -129,6 +134,7 @@ function clearColor() {
   bottomRight.style.backgroundColor = "darkblue";
 }
 
+// added
 function flashColor() {
   topLeft.style.backgroundColor = "lightgreen";
   topRight.style.backgroundColor = "tomato";

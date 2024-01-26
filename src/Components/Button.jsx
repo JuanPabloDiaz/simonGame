@@ -21,7 +21,16 @@ const Button = ({ color, onPress, isActive }) => {
 };
 
 Button.propTypes = {
-  color: PropTypes.oneOf(["red", "green", "blue", "yellow"]).isRequired,
+  color: PropTypes.oneOf([
+    "red",
+    "green",
+    "blue",
+    "yellow",
+    "darkRed",
+    "darkGreen",
+    "darkBlue",
+    "darkYellow",
+  ]).isRequired,
   onPress: PropTypes.func.isRequired,
   isActive: PropTypes.bool,
 };

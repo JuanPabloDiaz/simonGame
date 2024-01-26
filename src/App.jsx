@@ -40,6 +40,17 @@ const Game = () => {
     });
   };
 
+  // Create Audio objects for each sound
+  const sounds = useMemo(
+    () => [
+      new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"),
+      new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"),
+      new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"),
+      new Audio("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"),
+    ],
+    [],
+  );
+
   const play = () => {
     setWin(false);
     setOrder([]);
@@ -81,8 +92,7 @@ const Game = () => {
 
   const one = () => {
     if (noise) {
-      let audio = document.getElementById("clip1");
-      audio.play();
+      sounds[0].play();
     }
     setNoise(true);
     setColor((prevColor) => ({ ...prevColor, topLeft: "lightGreen" }));
@@ -90,8 +100,7 @@ const Game = () => {
 
   const two = () => {
     if (noise) {
-      let audio = document.getElementById("clip2");
-      audio.play();
+      sounds[1].play();
     }
     setNoise(true);
     setColor((prevColor) => ({ ...prevColor, topRight: "lightRed" }));
@@ -99,8 +108,7 @@ const Game = () => {
 
   const three = () => {
     if (noise) {
-      let audio = document.getElementById("clip3");
-      audio.play();
+      sounds[2].play();
     }
     setNoise(true);
     setColor((prevColor) => ({ ...prevColor, bottomLeft: "lightYellow" }));
@@ -108,8 +116,7 @@ const Game = () => {
 
   const four = () => {
     if (noise) {
-      let audio = document.getElementById("clip4");
-      audio.play();
+      sounds[3].play();
     }
     setNoise(true);
     setColor((prevColor) => ({ ...prevColor, bottomRight: "lightBlue" }));
@@ -172,16 +179,6 @@ const Game = () => {
 
   // ... rest of the functions go here, using set* functions to update state ...
 
-  // Create Audio objects for each sound
-  const sounds = useMemo(
-    () => [
-      new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"),
-      new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"),
-      new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"),
-      new Audio("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"),
-    ],
-    [],
-  );
   return (
     <Layout>
       <div className="wrap flex flex-col items-center justify-center">
