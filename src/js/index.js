@@ -1,3 +1,4 @@
+// added
 let order = [];
 let playerOrder = [];
 let flash;
@@ -10,6 +11,7 @@ let noise = true;
 let on = false;
 let win;
 
+// added
 const turnCounter = document.querySelector("#turn");
 const topLeft = document.querySelector("#topleft");
 const topRight = document.querySelector("#topright");
@@ -19,6 +21,7 @@ const strictButton = document.querySelector("#strict");
 const onButton = document.querySelector("#on");
 const startButton = document.querySelector("#start");
 
+// added
 strictButton.addEventListener("click", (event) => {
   if (strictButton.checked == true) {
     strict = true;
@@ -27,6 +30,7 @@ strictButton.addEventListener("click", (event) => {
   }
 });
 
+// added
 onButton.addEventListener("click", (event) => {
   if (onButton.checked == true) {
     on = true;
@@ -39,6 +43,7 @@ onButton.addEventListener("click", (event) => {
   }
 });
 
+// added
 startButton.addEventListener("click", (event) => {
   if (on || win) {
     play();
@@ -142,6 +147,7 @@ function flashColor() {
   bottomRight.style.backgroundColor = "lightskyblue";
 }
 
+// added
 topLeft.addEventListener("click", (event) => {
   if (on) {
     playerOrder.push(1);
@@ -155,6 +161,7 @@ topLeft.addEventListener("click", (event) => {
   }
 });
 
+// added
 topRight.addEventListener("click", (event) => {
   if (on) {
     playerOrder.push(2);
@@ -168,6 +175,7 @@ topRight.addEventListener("click", (event) => {
   }
 });
 
+// added
 bottomLeft.addEventListener("click", (event) => {
   if (on) {
     playerOrder.push(3);
@@ -181,6 +189,7 @@ bottomLeft.addEventListener("click", (event) => {
   }
 });
 
+// added
 bottomRight.addEventListener("click", (event) => {
   if (on) {
     playerOrder.push(4);

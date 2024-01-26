@@ -3,18 +3,21 @@ import Button from "./Components/Button";
 import Layout from "./Components/Layout";
 // import "./js/index.js";
 const Game = () => {
-  const [strict, setStrict] = useState(false);
-  const [on, setOn] = useState(false);
-  const [win, setWin] = useState(false);
+  // let variables:
   const [order, setOrder] = useState([]);
   const [playerOrder, setPlayerOrder] = useState([]);
   const [flash, setFlash] = useState(0);
   const [turn, setTurn] = useState(1);
-  const [turnCounter, setTurnCounter] = useState("");
-  const [noise, setNoise] = useState(false);
   const [good, setGood] = useState(false);
-  const [compTurn, setCompTurn] = useState(false);
+  const [computerTurn, setComputerTurn] = useState(false);
   const [intervalId, setIntervalId] = useState(null);
+  const [strict, setStrict] = useState(false);
+  const [noise, setNoise] = useState(true);
+  const [on, setOn] = useState(false);
+  const [win, setWin] = useState(false);
+
+  // const variables:
+  const [turnCounter, setTurnCounter] = useState("");
   const [color, setColor] = useState({
     topLeft: "green",
     topRight: "red",
@@ -63,7 +66,7 @@ const Game = () => {
     for (var i = 0; i < 20; i++) {
       setOrder((order) => [...order, Math.floor(Math.random() * 4) + 1]);
     }
-    setCompTurn(true);
+    setComputerTurn(true);
 
     setIntervalId(setInterval(gameTurn, 800));
   };
@@ -73,12 +76,12 @@ const Game = () => {
 
     if (flash === turn) {
       clearInterval(intervalId);
-      setCompTurn(false);
+      setComputerTurn(false);
       clearColor();
       setOn(true);
     }
 
-    if (compTurn) {
+    if (computerTurn) {
       clearColor();
       setTimeout(() => {
         if (order[flash] === 1) one();
@@ -130,6 +133,15 @@ const Game = () => {
     };
   }, [intervalId]);
 
+  const handleStrictChange = (event) => {
+    setStrict(event.target.checked);
+  };
+
+  useEffect(() => {
+    // This will be called whenever `strict` changes
+    console.log("Strict mode is", strict ? "enabled" : "disabled");
+  }, [strict]);
+
   const check = () => {
     if (playerOrder[playerOrder.length - 1] !== order[playerOrder.length - 1])
       setGood(false);
@@ -148,7 +160,7 @@ const Game = () => {
         if (strict) {
           play();
         } else {
-          setCompTurn(true);
+          setComputerTurn(true);
           setFlash(0);
           setPlayerOrder([]);
           setGood(true);
@@ -163,7 +175,7 @@ const Game = () => {
       // turn++;
       setTurnCounter(turn);
       setPlayerOrder([]);
-      setCompTurn(true);
+      setComputerTurn(true);
       setFlash(0);
       setTurnCounter(turn);
       setIntervalId(setInterval(gameTurn, 800));
@@ -177,8 +189,6 @@ const Game = () => {
     setWin(true);
   };
 
-  // ... rest of the functions go here, using set* functions to update state ...
-
   return (
     <Layout>
       <div className="wrap flex flex-col items-center justify-center">
@@ -188,26 +198,66 @@ const Game = () => {
         >
           <Button
             color={color.topLeft === "lightGreen" ? "darkGreen" : "green"}
-            onPress={() => {}}
-            // isActive={activeButton === 1}
+            onPress={() => {
+              if (on) {
+                setPlayerOrder([...playerOrder, 1]);
+                check();
+                one();
+                if (!win) {
+                  setTimeout(() => {
+                    clearColor();
+                  }, 300);
+                }
+              }
+            }}
             id="topleft"
           />
           <Button
             color={color.bottomLeft === "lightYellow" ? "darkYellow" : "yellow"}
-            onPress={() => {}}
-            // isActive={activeButton === 3}
+            onPress={() => {
+              if (on) {
+                setPlayerOrder([...playerOrder, 3]);
+                check();
+                three();
+                if (!win) {
+                  setTimeout(() => {
+                    clearColor();
+                  }, 300);
+                }
+              }
+            }}
             id="bottomleft"
           />
           <Button
             color={color.topRight === "lightRed" ? "darkRed" : "red"}
-            onPress={() => {}}
-            // isActive={activeButton === 2}
+            onPress={() => {
+              if (on) {
+                setPlayerOrder([...playerOrder, 2]);
+                check();
+                two();
+                if (!win) {
+                  setTimeout(() => {
+                    clearColor();
+                  }, 300);
+                }
+              }
+            }}
             id="topright"
           />
           <Button
             color={color.bottomRight === "lightBlue" ? "darkBlue" : "blue"}
-            onPress={() => {}}
-            // isActive={activeButton === 4}
+            onPress={() => {
+              if (on) {
+                setPlayerOrder([...playerOrder, 4]);
+                check();
+                four();
+                if (!win) {
+                  setTimeout(() => {
+                    clearColor();
+                  }, 300);
+                }
+              }
+            }}
             id="bottomright"
           />
         </div>
@@ -225,16 +275,22 @@ const Game = () => {
           <div className="">
             <div className="w-15 relative mx-3 mb-1 mt-4 inline-block text-center">
               <h1 id="turn" className="count text-[#430710]">
-                --
+                {turnCounter === "1" ? "" : "--"}
               </h1>
               <h3 className="mt-1 text-center font-oswald text-xs ">COUNT</h3>
             </div>
             <div className="relative inline-block w-[50px]">
-              <div
-                className="full-red but active:shadow-6xl pointer-events-auto relative -top-1 m-auto h-8 w-10 cursor-pointer rounded-full border-4 border-[#444] bg-yellow-400 shadow-md active:top-[0.15px] active:bg-yellow-100 active:shadow-[#292929]"
+              <button
+                className="full-red but active:shadow-6xl pointer-events-auto relative -top-1 m-auto h-8 w-10 cursor-pointer rounded-full border-4 border-[#444] bg-yellow-400 text-xs text-gray-500 shadow-md active:top-[0.15px] active:bg-yellow-100 active:shadow-[#292929]"
                 id="start"
-                // onClick={startNewGame}
-              ></div>
+                onClick={() => {
+                  if (on || win) {
+                    play();
+                  }
+                }}
+              >
+                Play
+              </button>
               <h3 className="mt-1 text-center font-oswald text-xs">START</h3>
             </div>
             <div id="switches" className="flex justify-around">
@@ -256,7 +312,9 @@ const Game = () => {
                 type="checkbox"
                 className="toggle w-2"
                 id="strict"
-                onChange={(event) => setStrict(event.target.checked)}
+                checked={strict}
+                // onChange={(event) => setStrict(event.target.checked)}
+                onChange={handleStrictChange}
               />
             </div>
             <div className="flex justify-around text-xs">
