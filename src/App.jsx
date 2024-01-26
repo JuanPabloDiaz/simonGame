@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import Button from "./Components/Button";
 import Layout from "./Components/Layout";
+// import "./js/index.js";
 
 const App = () => {
   const [sequence, setSequence] = useState([]);
@@ -80,36 +81,55 @@ const App = () => {
   return (
     <Layout>
       <div className="wrap flex flex-col items-center justify-center">
-        <div className="grid grid-flow-col grid-rows-2 rounded-full bg-[#292929] p-4">
+        <div
+          id="outer-circle"
+          className="grid grid-flow-col grid-rows-2 rounded-full bg-[#292929] p-4"
+        >
           <Button
             color="green"
             onPress={() => handleButtonPress(1)}
             isActive={activeButton === 1}
+            id="topleft"
           />
           <Button
             color="yellow"
             onPress={() => handleButtonPress(2)}
             isActive={activeButton === 2}
+            id="topright"
           />
           <Button
             color="red"
             onPress={() => handleButtonPress(3)}
             isActive={activeButton === 3}
+            id="bottomleft"
           />
           <Button
             color="blue"
             onPress={() => handleButtonPress(4)}
             isActive={activeButton === 4}
+            id="bottomright"
           />
         </div>
 
-        <div className="absolute left-[50%] top-[50%] m-[-122px] h-[250px] w-[250px] rounded-full border-8 border-gray-800 bg-[#ece7ee]">
-          <h1 className="mt-9 text-5xl font-extrabold text-gray-800">
+        <div
+          id="inner-circle"
+          className="absolute left-[50%] top-[50%] m-[-122px] h-[250px] w-[250px] rounded-full border-8 border-gray-800 bg-[#ece7ee]"
+        >
+          <h1 id="title" className="mt-7 text-5xl font-extrabold text-gray-800">
             Simon
             <span className="relative top-[-20px] text-2xl font-semibold">
               ®
             </span>
           </h1>
+          <div id="switches" className=" flex justify-around bg-slate-500">
+            <input type="checkbox" className="toggle w-2" id="on" />
+            <input type="checkbox" className="toggle w-2" id="strict" />
+          </div>
+          <div className="flex justify-around text-xs">
+            <span>POWER</span>
+            <span>STRICT</span>
+          </div>
+
           <div className="">
             <div className="w-15 relative mx-3 mb-1 mt-4 inline-block text-center">
               <h1 className="count text-[#430710]">--</h1>
