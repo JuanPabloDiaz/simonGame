@@ -8,6 +8,10 @@ export default {
         lightBlue: "#1c8cff",
         lightRed: "#ff4c4c",
         lightGreen: "#13ff7c",
+        darkYellow: "#c6b900",
+        darkBlue: "#0052cc",
+        darkRed: "#cc0000",
+        darkGreen: "#00b300",
       },
       fontFamily: {
         alfa: ['"Alfa Slab One"', "cursive"],
