@@ -1,331 +1,163 @@
-import { useState, useEffect, useMemo } from "react";
-import Button from "./Components/Button";
+import { useState, useRef, useEffect } from "react";
+import GameBtn from "./Components/simonYoutube/GameBtn";
 import Layout from "./Components/Layout";
-// import "./js/index.js";
-const Game = () => {
-  // let variables:
-  const [order, setOrder] = useState([]);
-  const [playerOrder, setPlayerOrder] = useState([]);
-  const [flash, setFlash] = useState(0);
-  const [turn, setTurn] = useState(1);
-  const [good, setGood] = useState(false);
-  const [computerTurn, setComputerTurn] = useState(false);
-  const [intervalId, setIntervalId] = useState(null);
-  const [strict, setStrict] = useState(false);
-  const [noise, setNoise] = useState(true);
-  const [on, setOn] = useState(false);
-  const [win, setWin] = useState(false);
 
-  // const variables:
-  const [turnCounter, setTurnCounter] = useState("");
-  const [color, setColor] = useState({
-    topLeft: "green",
-    topRight: "red",
-    bottomLeft: "yellow",
-    bottomRight: "blue",
-  });
+const colors = ["green", "red", "yellow", "blue"];
 
-  const clearColor = () => {
-    setColor({
-      topLeft: "darkGreen",
-      topRight: "darkRed",
-      bottomLeft: "darkYellow",
-      bottomRight: "darkBlue",
-    });
+function SimonGame() {
+  // states
+  const [sequence, setSequence] = useState([]);
+  const [playing, setPlaying] = useState(false);
+  const [playingIdx, setPlayingIdx] = useState(0);
+
+  // refs
+  const greenRef = useRef(null);
+  const redRef = useRef(null);
+  const yellowRef = useRef(null);
+  const blueRef = useRef(null);
+
+  // functions
+  const resetGame = () => {
+    setSequence([]);
+    setPlaying(false);
+    setPlayingIdx(0);
   };
 
-  const flashColor = () => {
-    setColor({
-      topLeft: "lightGreen",
-      topRight: "lightRed",
-      bottomLeft: "lightYellow",
-      bottomRight: "lightBlue",
-    });
+  const addNewColor = () => {
+    const color = colors[Math.floor(Math.random() * 4)];
+    const newSequence = [...sequence, color];
+    setSequence(newSequence);
   };
 
-  // Create Audio objects for each sound
-  const sounds = useMemo(
-    () => [
-      new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"),
-      new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"),
-      new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"),
-      new Audio("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"),
-    ],
-    [],
-  );
-
-  const play = () => {
-    setWin(false);
-    setOrder([]);
-    setPlayerOrder([]);
-    setFlash(0);
-    setIntervalId(null);
-    setTurn(1);
-    setTurnCounter(1);
-    setGood(true);
-    for (var i = 0; i < 20; i++) {
-      setOrder((order) => [...order, Math.floor(Math.random() * 4) + 1]);
+  const handleNextLevel = () => {
+    if (!playing) {
+      setPlaying(true);
+      addNewColor();
     }
-    setComputerTurn(true);
-
-    setIntervalId(setInterval(gameTurn, 800));
   };
 
-  const gameTurn = () => {
-    setOn(false);
+  const handleColorClick = (e) => {
+    if (playing) {
+      e.target.classList.add("opacity-50");
 
-    if (flash === turn) {
-      clearInterval(intervalId);
-      setComputerTurn(false);
-      clearColor();
-      setOn(true);
-    }
-
-    if (computerTurn) {
-      clearColor();
       setTimeout(() => {
-        if (order[flash] === 1) one();
-        if (order[flash] === 2) two();
-        if (order[flash] === 3) three();
-        if (order[flash] === 4) four();
-        setFlash(flash + 1);
-      }, 200);
-    }
-  };
+        e.target.classList.remove("opacity-50");
 
-  const one = () => {
-    if (noise) {
-      sounds[0].play();
-    }
-    setNoise(true);
-    setColor((prevColor) => ({ ...prevColor, topLeft: "lightGreen" }));
-  };
+        const clickColor = e.target.getAttribute("color");
 
-  const two = () => {
-    if (noise) {
-      sounds[1].play();
-    }
-    setNoise(true);
-    setColor((prevColor) => ({ ...prevColor, topRight: "lightRed" }));
-  };
+        // clicked the correct color of the sequence
+        if (sequence[playingIdx] === clickColor) {
+          // clicked the last color of the sequence
+          if (playingIdx === sequence.length - 1) {
+            setTimeout(() => {
+              setPlayingIdx(0);
+              addNewColor();
+            }, 250);
+          }
 
-  const three = () => {
-    if (noise) {
-      sounds[2].play();
-    }
-    setNoise(true);
-    setColor((prevColor) => ({ ...prevColor, bottomLeft: "lightYellow" }));
-  };
-
-  const four = () => {
-    if (noise) {
-      sounds[3].play();
-    }
-    setNoise(true);
-    setColor((prevColor) => ({ ...prevColor, bottomRight: "lightBlue" }));
-  };
-
-  useEffect(() => {
-    return () => {
-      if (intervalId) {
-        clearInterval(intervalId);
-      }
-    };
-  }, [intervalId]);
-
-  const handleStrictChange = (event) => {
-    setStrict(event.target.checked);
-  };
-
-  useEffect(() => {
-    // This will be called whenever `strict` changes
-    console.log("Strict mode is", strict ? "enabled" : "disabled");
-  }, [strict]);
-
-  const check = () => {
-    if (playerOrder[playerOrder.length - 1] !== order[playerOrder.length - 1])
-      setGood(false);
-
-    if (playerOrder.length == 3 && good) {
-      winGame();
-    }
-
-    if (good == false) {
-      flashColor();
-      setTurnCounter("NO!");
-      setTimeout(() => {
-        setTurnCounter(turn);
-        clearColor();
-
-        if (strict) {
-          play();
-        } else {
-          setComputerTurn(true);
-          setFlash(0);
-          setPlayerOrder([]);
-          setGood(true);
-          setIntervalId(setInterval(gameTurn, 800));
+          // missing some colors of the sequence to be clicked
+          else {
+            setPlayingIdx(playingIdx + 1);
+          }
         }
-      }, 800);
 
-      setNoise(false);
-    }
-
-    if (turn == playerOrder.length && good && !win) {
-      // turn++;
-      setTurnCounter(turn);
-      setPlayerOrder([]);
-      setComputerTurn(true);
-      setFlash(0);
-      setTurnCounter(turn);
-      setIntervalId(setInterval(gameTurn, 800));
+        // clicked the incorrect color of the sequence
+        else {
+          resetGame();
+          // alert("You Lost!");
+        }
+      }, 250);
     }
   };
 
-  const winGame = () => {
-    flashColor();
-    setTurnCounter("WIN!");
-    setOn(false);
-    setWin(true);
-  };
+  // useEffect
+  useEffect(() => {
+    // show sequence
+    if (sequence.length > 0) {
+      const showSequence = (idx = 0) => {
+        let ref = null;
+
+        if (sequence[idx] === "green") ref = greenRef;
+        if (sequence[idx] === "red") ref = redRef;
+        if (sequence[idx] === "yellow") ref = yellowRef;
+        if (sequence[idx] === "blue") ref = blueRef;
+
+        // highlight the ref
+        setTimeout(() => {
+          ref.current.classList.add("brightness-[2.5]");
+
+          setTimeout(() => {
+            ref.current.classList.remove("brightness-[2.5]");
+            if (idx < sequence.length - 1) showSequence(idx + 1);
+          }, 250);
+        }, 250);
+      };
+
+      showSequence();
+    }
+  }, [sequence]);
 
   return (
-    <Layout>
-      <div className="wrap flex flex-col items-center justify-center">
-        <div
-          id="outer-circle"
-          className="grid grid-flow-col grid-rows-2 rounded-full bg-[#292929] p-4"
-        >
-          <Button
-            color={color.topLeft === "lightGreen" ? "darkGreen" : "green"}
-            onPress={() => {
-              if (on) {
-                setPlayerOrder([...playerOrder, 1]);
-                check();
-                one();
-                if (!win) {
-                  setTimeout(() => {
-                    clearColor();
-                  }, 300);
-                }
-              }
-            }}
-            id="topleft"
-          />
-          <Button
-            color={color.bottomLeft === "lightYellow" ? "darkYellow" : "yellow"}
-            onPress={() => {
-              if (on) {
-                setPlayerOrder([...playerOrder, 3]);
-                check();
-                three();
-                if (!win) {
-                  setTimeout(() => {
-                    clearColor();
-                  }, 300);
-                }
-              }
-            }}
-            id="bottomleft"
-          />
-          <Button
-            color={color.topRight === "lightRed" ? "darkRed" : "red"}
-            onPress={() => {
-              if (on) {
-                setPlayerOrder([...playerOrder, 2]);
-                check();
-                two();
-                if (!win) {
-                  setTimeout(() => {
-                    clearColor();
-                  }, 300);
-                }
-              }
-            }}
-            id="topright"
-          />
-          <Button
-            color={color.bottomRight === "lightBlue" ? "darkBlue" : "blue"}
-            onPress={() => {
-              if (on) {
-                setPlayerOrder([...playerOrder, 4]);
-                check();
-                four();
-                if (!win) {
-                  setTimeout(() => {
-                    clearColor();
-                  }, 300);
-                }
-              }
-            }}
-            id="bottomright"
-          />
-        </div>
+    <>
+      <Layout>
+        {/* Main container */}
+        <div className="flex h-[500px] w-[500px] items-center justify-center rounded-full bg-neutral-800 text-white">
+          {/* Game container */}
+          <div className="relative flex flex-col items-center justify-center">
+            {/* Green and red container */}
+            <div>
+              {/* Green button */}
+              <GameBtn
+                color="green"
+                border="rounded-tl-full"
+                bg="bg-green-500"
+                onClick={handleColorClick}
+                ref={greenRef}
+              />
 
-        <div
-          id="inner-circle"
-          className="absolute left-[50%] top-[50%] m-[-122px] h-[250px] w-[250px] rounded-full border-8 border-gray-800 bg-[#ece7ee]"
-        >
-          <h1 id="title" className="mt-7 text-5xl font-extrabold text-gray-800">
-            Simon
-            <span className="relative top-[-20px] text-2xl font-semibold">
-              ®
-            </span>
-          </h1>
-          <div className="">
-            <div className="w-15 relative mx-3 mb-1 mt-4 inline-block text-center">
-              <h1 id="turn" className="count text-[#430710]">
-                {turnCounter === "1" ? "" : "--"}
-              </h1>
-              <h3 className="mt-1 text-center font-oswald text-xs ">COUNT</h3>
-            </div>
-            <div className="relative inline-block w-[50px]">
-              <button
-                className="full-red but active:shadow-6xl pointer-events-auto relative -top-1 m-auto h-8 w-10 cursor-pointer rounded-full border-4 border-[#444] bg-yellow-400 text-xs text-gray-500 shadow-md active:top-[0.15px] active:bg-yellow-100 active:shadow-[#292929]"
-                id="start"
-                onClick={() => {
-                  if (on || win) {
-                    play();
-                  }
-                }}
-              >
-                Play
-              </button>
-              <h3 className="mt-1 text-center font-oswald text-xs">START</h3>
-            </div>
-            <div id="switches" className="flex justify-around">
-              <input
-                type="checkbox"
-                className="toggle w-2"
-                id="on"
-                onChange={(event) => {
-                  setOn(event.target.checked);
-                  if (event.target.checked) {
-                    play();
-                  } else {
-                    clearColor();
-                    clearInterval(intervalId);
-                  }
-                }}
-              />
-              <input
-                type="checkbox"
-                className="toggle w-2"
-                id="strict"
-                checked={strict}
-                // onChange={(event) => setStrict(event.target.checked)}
-                onChange={handleStrictChange}
+              {/* Red button */}
+              <GameBtn
+                color="red"
+                border="rounded-tr-full"
+                bg="bg-red-500"
+                onClick={handleColorClick}
+                ref={redRef}
               />
             </div>
-            <div className="flex justify-around text-xs">
-              <span>POWER</span>
-              <span>STRICT</span>
+
+            {/* Yellow and blue container */}
+            <div>
+              {/* Yellow button */}
+              <GameBtn
+                color="yellow"
+                border="rounded-bl-full"
+                bg="bg-yellow-400"
+                onClick={handleColorClick}
+                ref={yellowRef}
+              />
+
+              {/* Blue button */}
+              <GameBtn
+                color="blue"
+                border="rounded-br-full"
+                bg="bg-blue-500"
+                onClick={handleColorClick}
+                ref={blueRef}
+              />
             </div>
+
+            {/* Play button */}
+            <button
+              className="absolute h-[150px] w-[150px] rounded-full bg-neutral-900 text-xl font-bold text-white duration-200 hover:scale-105 sm:h-[175px] sm:w-[175px] sm:text-2xl"
+              onClick={handleNextLevel}
+            >
+              {sequence.length === 0 ? "Play" : sequence.length}
+            </button>
           </div>
         </div>
-      </div>
-    </Layout>
+      </Layout>
+    </>
   );
-};
+}
 
-export default Game;
+export default SimonGame;
