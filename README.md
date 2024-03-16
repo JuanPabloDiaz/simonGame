@@ -1,19 +1,19 @@
 <div id="top"></div>
 
-# Simon Game
+# 25 + 5 Clock ⏰
 
-This project is a Simon Game, a memory matching game that tests your recall and hand-eye coordination. It has four colored buttons (red, blue, green, and yellow) that light up and play corresponding tones in a random sequence.
-
-Players must watch and listen carefully, then repeat the sequence by pressing the buttons in the correct order. If you succeed, the game adds another color and tone to the sequence, making it progressively longer and more challenging. The game continues until you make a mistake, at which point your score is displayed and you can start over.
+This project is a responsive web application that allows users to use a pomodoro timer to break down work into intervals, traditionally 25 minutes in length, separated by short breaks. Thats why is called 25 + 5 clock
 
 ## Description 💡
 
-This project was built as part of the **[freeCodeCamp’s legacy Front End Development Certification](https://www.freecodecamp.org/certification/1diazdev/legacy-front-end)**. The goal was to build a Simon Game with React. [Learn more](https://www.freecodecamp.org/learn/coding-interview-prep/take-home-projects/build-a-simon-game)
+This project is a 25 + 5 clock, which is a time management system that encourages people to work with the time they have—rather than against it. Using this method, you break your workday into 25-minute chunks separated by five-minute breaks. These intervals are referred to as pomodoros.
+
+This project was built as part of the **[freeCodeCamp Front End Libraries Certification](https://www.freecodecamp.org/certification/1diazdev/front-end-development-libraries)**. The goal was to build a 25 + 5 clock with React.
 
 <div align="center">
 
-[![Simon Game](https://img.shields.io/badge/View%20Demo-000?style=for-the-badge&logo=Google-Chrome&logoColor=white)](https://simon.jpdiaz.dev/)
-[![repo](https://img.shields.io/badge/View%20Code-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://stackblitz.com/github.com/JuanPabloDiaz/simonGame)
+[![25 + 5 clock](https://img.shields.io/badge/View%20Demo-000?style=for-the-badge&logo=Google-Chrome&logoColor=white)](https://25.jpdiaz.dev/)
+[![repo](https://img.shields.io/badge/View%20Code-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://stackblitz.com/github.com/JuanPabloDiaz/25-5_clock)
 
 </div>
 
@@ -29,15 +29,19 @@ This project was built as part of the **[freeCodeCamp’s legacy Front End Devel
 
 <img src="./src/assets/images/phone.png" width="250" />
 
+### Lighthouse Score 🚀
+
+<img src="./src/assets/images/lighthouse.png" />
+
 ## Features:
 
-- Responsive design: [Simon Game](https://simon.jpdiaz.dev) adapts to any screen size, ensuring a consistent and enjoyable experience for all users.
+- Responsive design: [25 + 5 Clock](https://25.jpdiaz.dev) adapts to any screen size, ensuring a consistent and enjoyable experience for all users.
 - Sleek and modern UI: Tailwind CSS provides a beautiful and intuitive user interface.
 - Efficient and performant: Vite.js ensures fast loading times and a smooth experience.
 
 ### Built With 🔑
 
-Welcome to [Simon Game](https://simon.jpdiaz.dev), a memory game built with React.js, Vite.js, and Tailwind CSS.
+Welcome to [25 + 5 Clock](https://25.jpdiaz.dev), a simple and intuitive pomodoro timer built with React.js, Vite.js, and Tailwind CSS.
 
 ![React](https://img.shields.io/badge/React-61DAFB.svg?style=for-the-badge&logo=React&logoColor=black)
 ![Vite](https://img.shields.io/badge/Vite-646CFF.svg?style=for-the-badge&logo=Vite&logoColor=white)
@@ -51,7 +55,7 @@ Here's a closer look at the tech stack:
 
 ## Get started 🛠️
 
-To get started with [Simon Game](https://simon.jpdiaz.dev), simply clone the repository and follow the setup instructions. You'll be up and running in no time!
+To get started with [25 + 5 Clock](https://25.jpdiaz.dev), simply clone the repository and follow the setup instructions. You'll be up and running in no time!
 
 ### Setup 📋
 
@@ -68,13 +72,13 @@ To get started with [Simon Game](https://simon.jpdiaz.dev), simply clone the rep
 
 ## Contribution 🤝
 
-I welcome contributions to the [Simon Game](https://simon.jpdiaz.dev)! Feel free to fork the repository and submit pull requests with your improvements.
+I welcome contributions to the [25 + 5 Clock](https://25.jpdiaz.dev)! Feel free to fork the repository and submit pull requests with your improvements.
 
 ## License 📜
 
-[Simon Game](https://simon.jpdiaz.dev) is licensed under the MIT License.
+[25 + 5 Clock](https://25.jpdiaz.dev) is licensed under the MIT License.
 
-I hope you enjoy using the Simon Game!
+I hope you enjoy using the 25 + 5 Clock!
 
 <!-- OTHER PROJECTS -->
 
@@ -101,11 +105,6 @@ I hope you enjoy using the Simon Game!
 
 Resources list that I find helpful and would like to give credit to.
 
-- [FreeCodeCamp Video Tutorial](https://www.youtube.com/watch?v=n_ec3eowFLQ)
-- [Github sample project](https://github.com/beaucarnes/simon-game)
-- [SimonGame.org](https://www.simongame.org/)
-- [Video Tutorial](https://www.youtube.com/watch?v=ooJ-yr9j-D4)
-- [Simon Game example](https://codepen.io/freeCodeCamp/full/obYBjE)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Vite.js](https://vitejs.dev/)
 - [React.js](https://reactjs.org/)
